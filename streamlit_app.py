@@ -1,12 +1,14 @@
 import streamlit as st 
 import pandas as pd
-import joblib
+import pickle
 
 st.markdown("# Power Consumption")
 
 st.write("Welcome to the app")
 
-shift = st.selectbox("Shift",(1, 2, 3))
+shift = st.selectbox(
+    "Shift",
+    (1, 2, 3))
 
 MSU = st.number_input("MSU")
 
@@ -22,7 +24,9 @@ if Shutdown=='Yes': Shutdown=1
 if Shutdown=='No': Shutdown=0
 
 test=pd.Series([shift,MSU,LineNotStaffed,STNU,STNUVAR,EO,Shutdown])
-st.write(test)
-model=joblib.load('model.joblib')
+
+file = open("model.obj",'r')
+model = pickle.load(file)
+
 KW=(model.predict(test))**0.5
 st.write(KW)
