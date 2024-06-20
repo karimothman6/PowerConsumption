@@ -25,7 +25,7 @@ if Shutdown=='No': Shutdown=0
 
 test=pd.Series([shift,MSU,LineNotStaffed,STNU,STNUVAR,EO,Shutdown])
 
-file = open("model.obj",'r')
+file = open("model.obj",'rb')
 model = pickle.load(file)
 
 KW=(model.predict(test))**0.5
