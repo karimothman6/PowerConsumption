@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 
 #Load Model
-model=joblib.load("model.sav")
+model=joblib.load("model.joblib")
 
 st.markdown("# Power Consumption")
 
