@@ -4,8 +4,12 @@ import pickle
 import sklearn as sk
 from sklearn.ensemble import RandomForestRegressor
 
-model=joblib.load('model1.joblib')
-
+# Load the model
+try:
+    model = joblib.load('model1.joblib')
+except Exception as e:
+    st.error(f"Error loading the model: {e}")
+    st.stop()
 st.markdown("# Power Consumption")
 
 st.write("Welcome to the app")
