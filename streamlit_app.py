@@ -3,8 +3,17 @@ import pandas as pd
 import joblib
 from sklearn.ensemble import RandomForestRegressor
 
-#Load Model
-model = joblib.load("model.joblib")
+try:
+    model = joblib.load("model.joblib")
+    st.write("Model loaded successfully.")
+except ModuleNotFoundError as e:
+    st.error(f"ModuleNotFoundError: {e}")
+    st.error("Ensure that all dependencies are installed and available.")
+except ValueError as e:
+    st.error(f"ValueError: {e}")
+    st.error("This error is often due to version incompatibilities. Please ensure the scikit-learn version used to create the model matches the one used to load it.")
+except Exception as e:
+    st.error(f"An error occurred: {e}")
 
 
 st.markdown("# Power Consumption")
