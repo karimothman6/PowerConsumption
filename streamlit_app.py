@@ -27,6 +27,7 @@ test=pd.Series([shift,MSU,LineNotStaffed,STNU,STNUVAR,EO,Shutdown])
 
 file = open("model.obj",'rb')
 model = pickle.load(file)
+file.close()
 
 KW=(model.predict(test))**0.5
 st.write(KW)
