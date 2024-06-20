@@ -4,16 +4,13 @@ import pickle
 import sklearn as sk
 from sklearn.ensemble import RandomForestRegressor
 
-with open('model.pkl', 'rb') as f:
-    model = pickle.load(f)
+model=joblib.load('model1.joblib')
 
 st.markdown("# Power Consumption")
 
 st.write("Welcome to the app")
 
-shift = st.selectbox(
-    "Shift",
-    (1, 2, 3))
+shift = st.selectbox("Shift",(1, 2, 3))
 
 MSU = st.number_input("MSU")
 
