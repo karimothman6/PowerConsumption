@@ -1,6 +1,9 @@
 import streamlit as st 
 import pandas as pd
-import pickle
+import joblib
+
+#Load Model
+model=joblib.load("model.sav")
 
 st.markdown("# Power Consumption")
 
@@ -24,9 +27,6 @@ if Shutdown=='Yes': Shutdown=1
 if Shutdown=='No': Shutdown=0
 
 test=pd.Series([shift,MSU,LineNotStaffed,STNU,STNUVAR,EO,Shutdown])
-
-with open('model.obj', 'rb') as fp:
-    model = pickle.load(fp)
 
 KW=(model.predict(test))**0.5
 st.write(KW)
