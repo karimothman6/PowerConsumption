@@ -4,14 +4,8 @@ import joblib
 from sklearn.ensemble import RandomForestRegressor
 
 #Load Model
-try:
-    model = joblib.load("model.joblib")
-    st.write("Model loaded successfully.")
-except ModuleNotFoundError as e:
-    st.error(f"ModuleNotFoundError: {e}")
-    st.error("Ensure that all dependencies are installed and available.")
-except Exception as e:
-    st.error(f"An error occurred: {e}")
+model = joblib.load("model.joblib")
+
 
 st.markdown("# Power Consumption")
 
