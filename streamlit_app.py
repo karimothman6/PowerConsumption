@@ -25,6 +25,6 @@ if Shutdown=='No': Shutdown=0
 
 test=pd.Series([shift,MSU,LineNotStaffed,STNU,STNUVAR,EO,Shutdown])
 
-model=joblib.load('model.joblib')
+model=pickle.load('model.joblib')
 KW=(model.predict(test))**0.5
 st.write(KW)
