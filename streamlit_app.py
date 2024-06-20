@@ -21,7 +21,7 @@ Shutdown=st.radio("Shutdown",['Yes','No'],horizontal=True)
 if Shutdown=='Yes': Shutdown=1
 if Shutdown=='No': Shutdown=0
 
-test=pd.Series([shift,MSU,LineNotStaffed,STNU,STNUVAR,EO,Shutdown])
+test=pd.Series([shift,MSU,LineNotStaffed,STNU,STNUVAR,EO,Shutdown]).T
 st.write(test)
 model=joblib.load('model.joblib')
 KW=(model.predict(test))**0.5
