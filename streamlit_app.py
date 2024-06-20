@@ -3,7 +3,22 @@ import pandas as pd
 import joblib
 import numpy as np
 
-model = joblib.load('model.joblib')
+model_path = 'model.joblib'
+
+if not os.path.exists(model_path):
+    st.error(f"The model file {model_path} does not exist. Please ensure the file is in the correct directory.")
+else:
+    try:
+        # Load the model
+        model = joblib.load(model_path)
+        st.success("Model loaded successfully!")
+    except Exception as e:
+        st.error(f"Error loading the model: {e}")
+
+    # Define the prediction function
+    def predict_kw(input_data):
+        prediction = model.predict(input_data)
+        return np.sqrt(abs(prediction))
 
 st.markdown("# Power Consumption")
 
@@ -26,9 +41,6 @@ Shutdown=st.radio("Shutdown",['Yes','No'],horizontal=True)
 if Shutdown=='Yes': Shutdown=1
 if Shutdown=='No': Shutdown=0
 
-def predict_kw(input_data):
-    prediction = model.predict(input_data)
-    return np.sqrt(abs(prediction))
 
 test=pd.DataFrame([shift,MSU,LineNotStaffed,STNU,STNUVAR,EO,Shutdown]).T
 
