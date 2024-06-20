@@ -1,6 +1,7 @@
 import streamlit as st 
 import pandas as pd
 import joblib
+from sklearn.ensemble import RandomForestRegressor
 
 #Load Model
 try:
