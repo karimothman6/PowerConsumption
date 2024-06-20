@@ -1,25 +1,11 @@
 import streamlit as st 
 import pandas as pd
-import joblib
-import numpy as np
-import os
+import pickle
+import sklearn as sk
+from sklearn.ensemble import RandomForestRegressor
 
-model_path = 'model.joblib'
-
-if not os.path.exists(model_path):
-    st.error(f"The model file {model_path} does not exist. Please ensure the file is in the correct directory.")
-else:
-    try:
-        # Load the model
-        model = joblib.load(model_path)
-        st.success("Model loaded successfully!")
-    except Exception as e:
-        st.error(f"Error loading the model: {e}")
-
-    # Define the prediction function
-    def predict_kw(input_data):
-        prediction = model.predict(input_data)
-        return np.sqrt(abs(prediction))
+with open('model.pkl', 'rb') as f:
+    model = pickle.load(f)
 
 st.markdown("# Power Consumption")
 
