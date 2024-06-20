@@ -1,6 +1,6 @@
 import streamlit as st 
 import pandas as pd
-import pickle
+import joblib
 import sklearn as sk
 from sklearn.ensemble import RandomForestRegressor
 
