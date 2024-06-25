@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestRegressor
 
 # Load the model
 try:
-    model = joblib.load('model1.joblib')
+    model = joblib.load('model (2).joblib')
 except Exception as e:
     st.error(f"Error loading the model: {e}")
     st.stop()
